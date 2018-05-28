@@ -1,4 +1,5 @@
 'use strict'
+var Example = require('./models/examples.js')
 
 //Import dependencies
 var express = require('express');
@@ -38,6 +39,10 @@ router.route('/')
   res.json({message: "Initialized!"});
 });
 
+router.route("/sumpin")
+.get((req, res) => {
+  res.json({message: "A lil!"});
+});
 
 //Configure Express to add '/api' in front of routes
 app.use('/api', router);
