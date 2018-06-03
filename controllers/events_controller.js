@@ -1,4 +1,4 @@
-const Event = require('./models/animals')
+const Event = require('../models/animals')
 
 module.exports = {
 

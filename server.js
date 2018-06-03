@@ -2,16 +2,13 @@
 var Example = require('./models/examples.js')
 
 //Import dependencies
-var express = require('express'),
-  router = express.Router(),
-  evenstController = require("./controllers/events_controller");
-
+var express = require('express')
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 //Create an instance of express and of its router
 var app = express();
-
+var router = express.Router();
 
 /*Set our port to either a predetermined port number if you have set
 it up in your environment, or 3001 */
@@ -37,24 +34,23 @@ app.use((req, res, next) => {
 
 
 //Add a route!
-router.get('/', eventsController.seedEvents)
-// router.route('/')
-// .get((req, res) => {
-//   res.json({message: "Initialized!"});
-// });
-//
-// router.route("/sumpin")
-// .get((req, res) => {
-//   res.json({message: "A lil!"});
-// });
-//
-// router.route("/guillotine")
-// .get((req,res) => {
-//     console.log("I will be executed!")
-//     res.json({message: "Sending response!"})
-//     console.log("I too shall be executed!")
-//
-//   })
+router.route('/')
+.get((req, res) => {
+  res.json({message: "Initialized!"});
+});
+
+router.route("/sumpin")
+.get((req, res) => {
+  res.json({message: "A lil!"});
+});
+
+router.route("/guillotine")
+.get((req,res) => {
+    console.log("I will be executed!")
+    res.json({message: "Sending response!"})
+    console.log("I too shall be executed!")
+
+  })
 
 
 //POST Example
@@ -130,7 +126,7 @@ router.get('/', eventsController.seedEvents)
 //   })
 
 //Configure Express to add '/api' in front of routes
-
+app.use('/api', router);
 
 //Start listening on specified port
 app.listen(port, () => {
