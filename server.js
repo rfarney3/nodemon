@@ -2,9 +2,10 @@
 var Example = require('./models/examples.js')
 
 //Import dependencies
-var express = require('express')
+var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+const { seedDatabase } = require('mongo-seeding');
 
 //Create an instance of express and of its router
 var app = express();
