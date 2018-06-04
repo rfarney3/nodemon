@@ -1,7 +1,7 @@
 # Getting Started with a MERN stack
 
 
-### Packages 
+### Packages
 
 1. Express
       * `npm i express`
@@ -25,7 +25,7 @@
 
 ### Setup
 
-After running `create-react-app` to build out your client, the following needs to be setup. Keep in mind that this guide is primarily desgined to keep Express and React within the same repo. It is entirely possible (and likely) that you would want to separate the backend of Express from the frontend of React. In this case, your folder setup will be up to you, but the rest of the guide will still be relevant. 
+After running `create-react-app` to build out your client, the following needs to be setup. Keep in mind that this guide is primarily desgined to keep Express and React within the same repo. It is entirely possible (and likely) that you would want to separate the backend of Express from the frontend of React. In this case, your folder setup will be up to you, but the rest of the guide will still be relevant.
 
 1. Files/folders
       * `/models/`
@@ -33,11 +33,11 @@ After running `create-react-app` to build out your client, the following needs t
       * `/Procfile`
         * Create this file in your root directory. In it, you will add the following lines:
         ```
-            web: react-scripts start 
+            web: react-scripts start
             api: nodemon server.js
         ```
         * The first line specifies what commands to run to boot the client, while the second specifies the commands to boot the API
-        
+
       * `/server.js`
         * We will do most of our configuration and routing work in here. For now, create the file in your root directory and stay tuned to see what we'll be adding
       * `/package.json`
@@ -49,7 +49,7 @@ After running `create-react-app` to build out your client, the following needs t
 
 2. MongoDB
   There are two ways to get started with Mongo: locally or remotely. Remote setup is a bit faster and easier, but eventually you may want to setup locally. Here's how to do both
-  
+
     - mLab
         * We will be using [mLab](https://mlab.com/), an online database hosting service. Make and verify an account. From the main page, you can create a new database by clicking `+ Create new`. Follow the instructions for setting up your cloud services. When that's done, there will be a new row added to 'MongoDB Deployments'. Clicking this will take you to settings related to this DB. Under a tab labeled 'Users', make a username and password to use to access this DB. On this page, you will also see the URI we will use to connect to this database. It should look something like this:
             ```
@@ -80,7 +80,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var router = express.Router();
 
-/*Set our port to either a predetermined port number if you have set 
+/*Set our port to either a predetermined port number if you have set
 it up in your environment, or 3001 */
 var port = process.env.API_PORT || 3001;
 
@@ -165,7 +165,7 @@ And we will now have access to this model in our `server.js`, which we will use 
 Please refer to the following [Mongoose schema docs](http://mongoosejs.com/docs/guide.html) to get a better sense of the different ways schemas can be setup.
 
 
-You may also wabt to become acquanted with the documentation on [Mongoose Models](http://mongoosejs.com/docs/models.html), [Mongoose Documents](http://mongoosejs.com/docs/documents.html) (note: 'documents' are analogous to SQL's 'rows'), and [Mongoose Queries](http://mongoosejs.com/docs/queries.html). There is also an extensive [Mongoose API docs page](http://mongoosejs.com/docs/api.html), which you may want to take a look through to get a better sense of the functions you have at your disposal. 
+You may also wabt to become acquanted with the documentation on [Mongoose Models](http://mongoosejs.com/docs/models.html), [Mongoose Documents](http://mongoosejs.com/docs/documents.html) (note: 'documents' are analogous to SQL's 'rows'), and [Mongoose Queries](http://mongoosejs.com/docs/queries.html). There is also an extensive [Mongoose API docs page](http://mongoosejs.com/docs/api.html), which you may want to take a look through to get a better sense of the functions you have at your disposal.
 
 ### Ingredient 2: Controllers and Routing
 
@@ -230,7 +230,7 @@ var router = express.Router()
 router.route("/choo_choo")
 .get((req,res) => {
 
-    res.json({message: "All aboard the Express Train"}) 
+    res.json({message: "All aboard the Express Train"})
   })
 ```
 
@@ -254,7 +254,7 @@ router.route("/guillotine")
 
 Okay cool, so we learned a little bit about creating schemas and models using Mongoose to communicate with Mongo as well as a little bit about creating routes in Express. Let's bring it all together.
 
-Suppose we had a model that looked like the following: 
+Suppose we had a model that looked like the following:
 
 ```javascript
   // /model/animals.js
@@ -280,7 +280,7 @@ We can create some RESTful routes to this model!
 
 ```javascript
 
-/* 
+/*
 ...Initial config here...
 */
 
@@ -362,7 +362,7 @@ router.route("/animals/:id")
 
 ```
 
-Closely read the above code. Mongoose has a ton of methods to interact with the database. Note that every method takes a callback as its last argument. This callback is executed once the query is completed and has `err` as its first argument. As you can probably tell, in the case that the query was successful, `err` will be `null`; otherwise, `err` will contain information about why that query failed. 
+Closely read the above code. Mongoose has a ton of methods to interact with the database. Note that every method takes a callback as its last argument. This callback is executed once the query is completed and has `err` as its first argument. As you can probably tell, in the case that the query was successful, `err` will be `null`; otherwise, `err` will contain information about why that query failed.
 
 And there you have it: a basic RESTful API in Express and Mongo! Express, Mongo, and Mongoose each have a lot more to offer, and I heavily suggest reading through the documentation for each to get a better feel for the other bells and whistles each has to offer.
 
