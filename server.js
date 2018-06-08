@@ -5,7 +5,6 @@ var Example = require('./models/examples.js')
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-const { seedDatabase } = require('mongo-seeding');
 
 //Create an instance of express and of its router
 var app = express();
@@ -55,35 +54,31 @@ router.route("/guillotine")
 
 
 //POST Example
-// var Animal = require('./models/animals');
-//
-// router.route("/animals")
-// .get((req, res) => {
-//     Animal.find((err, animals) => {
-//         if (err) {
-//           res.send(err)
-//         } else {
-//           res.json({ animals })
-//         }
-//       })
-//   })
-// .post((req, res) => {
-//     let newAnimal = new Animal()
-//
-//     newAnimal.species = req.body.species
-//     newAnimal.name = req.body.name
-//     newAnimal.gender = req.body.gender
-//     newAnimal.population = req.body.population
-//     newAnimal.extinct = req.body.extinct
-//
-//     newAnimal.save((err) => {
-//         if (err) {
-//           res.send(err)
-//         } else {
-//           res.send({ newAnimal })
-//         }
-//       })
-//   })
+var Animal = require('./models/animals');
+
+router.route("/animals")
+.get((req, res) => {
+    Animal.find((err, animals) => {
+        if (err) {
+          res.send(err)
+        } else {
+          res.json({ animals })
+        }
+      })
+  })
+.post((req, res) => {
+    let newAnimal = new Animal()
+
+    newAnimal.species = req.body.species
+
+    newAnimal.save((err) => {
+        if (err) {
+          res.send(err)
+        } else {
+          res.send({ newAnimal })
+        }
+      })
+  })
 //
 // router.route("/animals/:id")
 // .get((req, res) => {

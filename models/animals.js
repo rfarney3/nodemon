@@ -4,11 +4,7 @@
   var Schema = mongoose.Schema;
 
   var AnimalsSchema = new Schema({
-   species: String,
-   name: String,
-   gender: String,
-   population: Number,
-   extinct: Boolean
+   species: String
   });
 
 module.exports = mongoose.model('Animal', AnimalsSchema);
